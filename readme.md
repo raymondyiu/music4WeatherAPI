@@ -18,7 +18,7 @@
 | 1      | GET /api/v1/music4Weather                  | Welcome to Music for Weather API           |
 | 2      | GET /api/v1/music4Weather/getWeatherByCity | input : city output : Weather info         |
 | 3      | GET /api/v1/music4Weather/getTrackByName   | intput : name output : music track preview |
-
+| 4      | GET /api/v1/music4Weather/getTrackBaseOnWeather | input : city output : random one track preview call getWeatherByCity then getTrachByName |
 
 ## Test result
 
