@@ -1,6 +1,7 @@
 # Music for Weather API - group 5
 
 ## Introduction
+Group 5 API project is ....
 
 ## Technology
 
