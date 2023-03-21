@@ -5,7 +5,7 @@ public class Artist {
     private String id;
     private String name;
     private String link;
-    private String picture_link;
+    private String picture;
 
     public String getId() {
         return id;
@@ -31,11 +31,11 @@ public class Artist {
         this.link = link;
     }
 
-    public String getPicture_link() {
-        return picture_link;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPicture_link(String picture_link) {
-        this.picture_link = picture_link;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

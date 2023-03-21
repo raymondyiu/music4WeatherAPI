@@ -5,7 +5,9 @@ public class Album {
     private String id;
     private String title;
     private String link;
-    private String cover_image_link;
+    private String cover_small;
+    private String release_date;
+
 
     public String getId() {
         return id;
@@ -31,11 +33,19 @@ public class Album {
         this.link = link;
     }
 
-    public String getCover_image_link() {
-        return cover_image_link;
+    public String getCover_small() {
+        return cover_small;
     }
 
-    public void setCover_image_link(String cover_image_link) {
-        this.cover_image_link = cover_image_link;
+    public void setCover_small(String cover_small) {
+        this.cover_small = cover_small;
+    }
+
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 }

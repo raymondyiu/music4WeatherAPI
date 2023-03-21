@@ -6,7 +6,7 @@ public class Track {
     private String id;
     private String title;
     private String link;
-    private String preview_link;
+    private String preview;
     private Artist artist;
     private Album album;
 
@@ -34,12 +34,12 @@ public class Track {
         this.link = link;
     }
 
-    public String getPreview_link() {
-        return preview_link;
+    public String getPreview() {
+        return preview;
     }
 
-    public void setPreview_link(String preview_link) {
-        this.preview_link = preview_link;
+    public void setPreview(String preview_link) {
+        this.preview = preview_link;
     }
 
     public Artist getArtist() {
