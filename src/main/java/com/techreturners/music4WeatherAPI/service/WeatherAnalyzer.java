@@ -1,5 +1,6 @@
 package com.techreturners.music4WeatherAPI.service;
 
+import com.techreturners.music4WeatherAPI.repository.WeatherData;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import static com.techreturners.music4WeatherAPI.service.WeatherAnalyzer.Keyword
 
 public class WeatherAnalyzer {
 
-    private final WeatherInfo info;
+    private final WeatherData data;
 
     private String description;
     private int code;
@@ -27,8 +28,8 @@ public class WeatherAnalyzer {
     @Getter
     Set<Keyword> keywords = new HashSet<>();
 
-    public WeatherAnalyzer(WeatherInfo info) {
-        this.info = info;
+    public WeatherAnalyzer(WeatherData info) {
+        this.data = info;
         // Deducing keywords in order of least to most specific
         calculateTemperature();
         calculateCloudCover();
