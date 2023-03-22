@@ -1,11 +1,16 @@
 package com.techreturners.music4WeatherAPI.model;
 
+import java.util.List;
+
 public class TrackList {
+    private List<Track> data;
 
-    //TODO
+    public List<Track> getData() {
+        return data;
+    }
+    public void setData(List<Track> data) {
+        this.data = data;
+    }
 
-    //How to define tracklist?
-    //List<Track> or String tracklist as API_link for tracklist?
 
-    //
 }
