@@ -15,6 +15,8 @@ public class WeatherAnalyzer {
     private final WeatherInfo info;
 
     private String description;
+    private int code;
+
     private float temperature;
     private float windSpeed;
     private float precipitation;
@@ -30,6 +32,8 @@ public class WeatherAnalyzer {
         // Deducing keywords in order of least to most specific
         calculateTemperature();
         calculateCloudCover();
+        calculatePrecipitation();
+        calculateWind();
     }
 
     private void calculateTemperature() {
@@ -42,7 +46,12 @@ public class WeatherAnalyzer {
         this.keywords.add(this.cloud > 69 ? CLOUDY : SUNNY);
     }
 
-    //TODO: Calculate rain first
+
+    private void calculatePrecipitation() {
+        //TODO: Add distinctions between snow and hail
+        if (this.precipitation > 0.2) this.keywords.add(RAINY);
+        if (this.precipitation > 0.2) this.keywords.add(RAINY);
+    }
 
     private void calculateWind() {
         if (this.windSpeed > 3 && this.windSpeed < 31) this.keywords.add(BREEZY);
