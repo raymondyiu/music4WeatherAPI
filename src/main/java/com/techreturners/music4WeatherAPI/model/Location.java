@@ -4,11 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class Artist {
-
-    private String id;
+public class Location {
     private String name;
-    private String link;
-    private String picture;
-
+    private String region;
+    private String country;
+    private String tz_id;
+    private String localtime;
 }
