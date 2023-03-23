@@ -8,8 +8,12 @@ public class Current {
     private double wind_mph;
     private double wind_kph;
     private double wind_degree;
-    private double humidity;
-    private double cloud;
+    private double precip_mm;
+    private double precip_in;
+    private int humidity;
+    private int cloud;
+    private double vis_km;
+    private double vis_miles;
     private double uv;
 
     public double getTemp_c() {
@@ -68,20 +72,52 @@ public class Current {
         this.wind_degree = wind_degree;
     }
 
-    public double getHumidity() {
+    public double getPrecip_mm() {
+        return precip_mm;
+    }
+
+    public void setPrecip_mm(double precip_mm) {
+        this.precip_mm = precip_mm;
+    }
+
+    public double getPrecip_in() {
+        return precip_in;
+    }
+
+    public void setPrecip_in(double precip_in) {
+        this.precip_mm = precip_in;
+    }
+
+    public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 
-    public double getCloud() {
+    public int getCloud() {
         return cloud;
     }
 
-    public void setCloud(double cloud) {
+    public void setCloud(int cloud) {
         this.cloud = cloud;
+    }
+
+    public double getVis_km() {
+        return vis_km;
+    }
+
+    public void setVis_km(double vis_km) {
+        this.vis_km = vis_km;
+    }
+
+    public double getVis_miles() {
+        return vis_miles;
+    }
+
+    public void setVis_miles(double vis_miles) {
+        this.vis_miles = vis_miles;
     }
 
     public double getUv() {
