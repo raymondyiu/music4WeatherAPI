@@ -1,5 +1,6 @@
 package com.techreturners.music4WeatherAPI.model;
 
+
 public class Weather {
     private Location location;
     private Current current;

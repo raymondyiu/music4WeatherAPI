@@ -1,7 +1,6 @@
 package com.techreturners.music4WeatherAPI.controller;
 
 import com.techreturners.music4WeatherAPI.model.Track;
-import com.techreturners.music4WeatherAPI.model.TrackList;
 import com.techreturners.music4WeatherAPI.service.DeezerAPICallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

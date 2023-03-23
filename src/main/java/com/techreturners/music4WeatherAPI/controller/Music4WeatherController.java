@@ -22,8 +22,6 @@ public class Music4WeatherController {
     @Autowired
     Music4WeatherService music4WeatherService;
     @Autowired
-    DeezerController deezerController;
-    @Autowired
     WeatherController weatherController;
 
     @GetMapping
@@ -36,39 +34,14 @@ public class Music4WeatherController {
     public ResponseEntity<Track> getTrack(@PathVariable String city) throws Exception {
 
         ResponseEntity<List<String>> keywordsResponse = weatherController.getKeywords(city);
-        if (keywordsResponse.getStatusCode() != HttpStatus.OK) {
-            throw new Exception(); //TODO: Established exception handling
-        }
-        List<String> keywords = keywordsResponse.getBody();
+        if (keywordsResponse.getStatusCode() != HttpStatus.OK) {throw new Exception(); /*TODO: Established exception handling*/}
 
-        if (keywords == null) {
-            throw new Exception(); //TODO: Established exception handling
-        }
-
-        //TODO: Make into dedicated method
-        String chosenKeyword = keywords.get(ThreadLocalRandom.current().nextInt(0, keywords.size()));
-        String deezerQuery = "track:\"" + chosenKeyword + "\"";
-        //    https://api.deezer.com/search?q=track:"i need a dollar"
-        ResponseEntity<List<Track>> tracks = deezerController.getTracksByQueryParam(deezerQuery);
-
-        if (tracks.getStatusCode() != HttpStatus.OK) {
-            throw new Exception(); //TODO: Established exception handling
-        }
-
-        List<Track> trackList = tracks.getBody();
-
-        if (trackList == null) {
-            throw new Exception(); //TODO: Established exception handling
-        }
-
-        //TODO: Make into dedicated method
-        Track chosenTrack= trackList.get(ThreadLocalRandom.current().nextInt(0, trackList.size()));
+        Track chosenTrack = music4WeatherService.getTrack(keywordsResponse);
 
         return new ResponseEntity<>(chosenTrack,HttpStatus.OK);
 
-        //TODO: Send Track to View class
+        //TODO: Send Track to View class handler
 
     }
-    
 
 }
