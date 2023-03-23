@@ -1,19 +1,13 @@
 package com.techreturners.music4WeatherAPI.controller;
 
-//import com.techreturners.music4WeatherAPI.model.Music4Weather;
 import com.techreturners.music4WeatherAPI.model.Track;
-import com.techreturners.music4WeatherAPI.model.Weather;
 import com.techreturners.music4WeatherAPI.service.Music4WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @RequestMapping("/api/v1/music4Weather")
