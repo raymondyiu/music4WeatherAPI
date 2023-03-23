@@ -41,7 +41,7 @@ public class DeezerControllerTest {
         try {
 
             this.mockMvcController.perform(
-                            MockMvcRequestBuilders.get("/search?q=track:test"))
+                            MockMvcRequestBuilders.get("/api/v1/track/search?q=test"))
                     .andExpect(MockMvcResultMatchers.status().isOk());
         } catch (Exception e) {
             System.out.println("##### raymond testing");
