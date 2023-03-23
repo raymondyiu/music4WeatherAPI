@@ -1,5 +1,6 @@
 package com.techreturners.music4WeatherAPI.service;
 
+import com.techreturners.music4WeatherAPI.exception.RecordNotFoundException;
 import com.techreturners.music4WeatherAPI.model.Track;
 import com.techreturners.music4WeatherAPI.model.TrackList;
 import org.springframework.stereotype.Service;
@@ -10,21 +11,24 @@ import java.util.List;
 @Service
 public class DeezerAPICallServiceImpl implements DeezerAPICallService{
     @Override
-    public Track getTrackById(Long id) {
+    public Track getTrackById(Long id) throws RecordNotFoundException {
         String uri = "https://api.deezer.com/track/" + id;
         RestTemplate restTemplate = new RestTemplate();
-
         Track track = restTemplate.getForObject(uri, Track.class);
+        if(null == track.getId())
+                throw new RecordNotFoundException("Records Not Found !!!!");
         return track;
     }
 
     //https://api.deezer.com/search?q=eminem
     @Override
-    public List<Track> getTracksByParam(String param) {
+    public List<Track> getTracksByParam(String param) throws RecordNotFoundException {
         String uri = "https://api.deezer.com/search?q=" + param;
         RestTemplate restTemplate = new RestTemplate();
 
         TrackList trackList = restTemplate.getForObject(uri, TrackList.class);
+        if(trackList.getData().isEmpty())
+            throw new RecordNotFoundException("Records Not Found !!!!");
         return trackList.getData();
     }
 }
