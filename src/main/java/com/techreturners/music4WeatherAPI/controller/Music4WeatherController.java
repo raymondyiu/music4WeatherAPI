@@ -47,8 +47,9 @@ public class Music4WeatherController {
 
         //TODO: Make into dedicated method
         String chosenKeyword = keywords.get(ThreadLocalRandom.current().nextInt(0, keywords.size()));
-
-        ResponseEntity<List<Track>> tracks = deezerController.getTracksByQueryParam(chosenKeyword);
+        String deezerQuery = "track:\"" + chosenKeyword + "\"";
+        //    https://api.deezer.com/search?q=track:"i need a dollar"
+        ResponseEntity<List<Track>> tracks = deezerController.getTracksByQueryParam(deezerQuery);
 
         if (tracks.getStatusCode() != HttpStatus.OK) {
             throw new Exception(); //TODO: Established exception handling
@@ -68,13 +69,6 @@ public class Music4WeatherController {
         //TODO: Send Track to View class
 
     }
-
-
-
-//    @RequestMapping("/keywords/{city}")
-//    public ResponseEntity<String> getKeywords() {
-//        String message = music4WeatherService.getWelcomMsg();
-//        return new ResponseEntity<>(message, HttpStatus.OK);
-//    }
+    
 
 }
