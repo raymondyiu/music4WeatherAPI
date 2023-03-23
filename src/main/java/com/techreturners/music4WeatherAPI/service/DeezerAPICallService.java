@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface DeezerAPICallService {
 
-    Track getTrackById(Long id); throws RecordNotFoundException;
-    List<Track> getTracksByParam(String param); throws RecordNotFoundException;
+    Track getTrackById(Long id) throws RecordNotFoundException;
+    List<Track> getTracksByParam(String param) throws RecordNotFoundException;
     String generateTrackSearchQuery(List<String> keywords);
     
 }
