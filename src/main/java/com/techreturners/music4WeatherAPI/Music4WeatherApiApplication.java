@@ -10,24 +10,20 @@ import javax.swing.*;
 import java.awt.*;
 
 
-//@SpringBootApplication
+@SpringBootApplication
 public class Music4WeatherApiApplication {
 
 	public static void main(String[] args) {
 
-		ConfigurableApplicationContext context = SpringApplication.run(Music4WeatherApiApplication.class, args);
+		ConfigurableApplicationContext context = new SpringApplicationBuilder(Music4WeatherApiApplication.class)
+				.headless(false).run(args);
 
-		Music4WeatherView music4WeatherView = context.getBean(Music4WeatherView.class);
+		EventQueue.invokeLater(() -> {
 
-//		var ctx = new SpringApplicationBuilder(Music4WeatherView.class)
-//				.headless(false).run(args);
-//
-//		EventQueue.invokeLater(() -> {
-//
-//			Music4WeatherApiApplication ex = ctx.getBean(Music4WeatherView.class);
-//			ex.setVisible(true);
-//
-//		});
+			Music4WeatherView music4WeatherView = context.getBean(Music4WeatherView.class);
+			music4WeatherView.setVisible(true);
+
+		});
 
 	}
 
