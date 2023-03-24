@@ -18,12 +18,7 @@ public class Music4WeatherApiApplication {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(Music4WeatherApiApplication.class)
 				.headless(false).run(args);
 
-		EventQueue.invokeLater(() -> {
-
-			Music4WeatherView music4WeatherView = context.getBean(Music4WeatherView.class);
-			music4WeatherView.setVisible(true);
-
-		});
+		EventQueue.invokeLater(() -> context.getBean(Music4WeatherView.class));
 
 	}
 

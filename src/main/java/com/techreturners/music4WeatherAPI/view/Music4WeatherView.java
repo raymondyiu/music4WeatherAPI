@@ -98,20 +98,26 @@ public class Music4WeatherView extends JFrame {
 //
 //    }
 
-    private void initUI() {
+    private void initUI() throws Exception {
 
-        var quitButton = new JButton("Quit");
+//        var quitButton = new JButton("Quit");
+//
+//        quitButton.addActionListener((ActionEvent event) -> {
+//
+//            System.exit(0);
+//        });
+//
+//        createLayout(quitButton);
+//
+//        setTitle("Quit button");
+//        setSize(300, 200);
+//        setLocationRelativeTo(null);
+//        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        quitButton.addActionListener((ActionEvent event) -> {
-            System.exit(0);
-        });
+        UI ui = new UI();
 
-        createLayout(quitButton);
+        ui.setVisible(true);
 
-        setTitle("Quit button");
-        setSize(300, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     private void createLayout(JComponent... arg) {
