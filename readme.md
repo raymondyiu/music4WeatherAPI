@@ -1,11 +1,23 @@
 # Music for Weather API - group 5
 
 ## Introduction
-Group 5 API project is ....
+An API application that takes the name of a city as input and provides a song recommendation based on the current weather conditions in that city.
 
-## Technology
+## Pre-Requisities
 
-## Assumptions
+- Java SE Development Kit 17
+- Maven
+- Deezer API https://rapidapi.com/deezerdevs/api/deezer-1
+- Weather API - https://www.weatherapi.com/docs/
+
+## Technology & Dependencies
+
+- Spring Boot
+- Spring Web
+- Lombok
+- openjfx
+- junit
+
 
 ## UML diagram
 ![UML Diagram of Mars Rover Challenge](./images/Music4WeatherAPI-group5.drawio.png)
