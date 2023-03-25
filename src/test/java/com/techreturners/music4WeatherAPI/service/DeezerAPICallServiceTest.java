@@ -1,34 +1,29 @@
 package com.techreturners.music4WeatherAPI.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techreturners.music4WeatherAPI.model.Album;
 import com.techreturners.music4WeatherAPI.model.Artist;
 import com.techreturners.music4WeatherAPI.model.Track;
 import com.techreturners.music4WeatherAPI.model.TrackList;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 @SpringBootTest
 public class DeezerAPICallServiceTest {
 
-    private DeezerAPICallServiceImpl deezerAPICallServiceImpl = new DeezerAPICallServiceImpl();
     @Mock
     private RestTemplate restTemplate;
-
+    @InjectMocks
+    private DeezerAPICallServiceImpl deezerAPICallServiceImpl = new DeezerAPICallServiceImpl();
     @Test
     public void testGetTrackById() {
 
@@ -66,7 +61,7 @@ public class DeezerAPICallServiceTest {
         when(restTemplate.getForObject("https://api.deezer.com/search?q=" + param, TrackList.class)).thenReturn( trackList);
 
         List<Track> actualResult = deezerAPICallServiceImpl.getTracksByParam(param);
-        //assertThat(actualResult.size()).isEqualTo(3);
+        assertThat(actualResult.size()).isEqualTo(3);
         assertThat(actualResult.get(0).getId()).isEqualTo("916426");
         assertThat(actualResult.get(1).getId()).isEqualTo("916424");
         assertThat(actualResult.get(2).getId()).isEqualTo("6461432");
