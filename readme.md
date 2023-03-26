@@ -43,5 +43,26 @@ An API application that takes the name of a city as input and provides a song re
 
 ## Test result
 
+### Main Entry Point
+
+- The  Main Entry Point for the application is : Music4WeatherApiApplication.java
+
+### Running the Unit Tests
+
+- You can run the unit tests in IntelliJ, or you can go to your terminal and inside the root of this directory, run:
+
+```mvn test```
+
+### Functional test result
+
+- Recommend a song base on user's city input and city's current weather condition
+  ![Functional test result #1](./images/music4WeatherFunctionTest1.png)
+
 
 ## Future thoughts
+- Frontend with Images
+- Track preview playback
+- user management module to store the acount info, playlist etc.
+- Admin module to manage the user accounts
+- Database integration
+- Twilio Controller
