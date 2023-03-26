@@ -37,7 +37,7 @@ public class Music4WeatherView extends JFrame {
 
         UI ui = new UI();
 
-        ui.button.addActionListener(new ActionListener() {
+        ui.cityButton.addActionListener(new ActionListener() {
             @SneakyThrows
             public void actionPerformed(ActionEvent e) {
                 ResponseEntity<Track> trackQuery = music4WeatherController.getTrack(ui.cityBox.getText());

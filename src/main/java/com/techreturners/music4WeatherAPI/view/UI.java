@@ -7,35 +7,31 @@ import java.awt.*;
 public class UI extends JFrame {
 
     JLabel intro;
-    JLabel trackLabel, cityLabel, artistLabel, artistIcon, albumLabel, albumIcon, location, weatherIcon, temperature, otherWeatherLabel;
+    JLabel trackLabel, or, artistLabel, artistIcon, albumLabel, albumIcon, location, weatherIcon, temperature, otherWeatherLabel;
     JTextField cityBox;
-    JButton button;
+    JButton cityButton, locationButton;
     Container container;
 
     public UI() {
         intro = new JLabel("Music4Weather"/*track.getTitle()*/);
         intro.setFont(new Font("Agency FB", Font.BOLD, 40));
         intro.setForeground(Color.LIGHT_GRAY);
-        location = new JLabel("");
-        location.setForeground(Color.LIGHT_GRAY);
-        location.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
+        location = standardStylize(18);
         weatherIcon = new JLabel("");
-        temperature = new JLabel("");
-        temperature.setForeground(Color.LIGHT_GRAY);
-        temperature.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
-        otherWeatherLabel = new JLabel("");
-        otherWeatherLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-        otherWeatherLabel.setForeground(Color.LIGHT_GRAY);
-        trackLabel = new JLabel("");
-        cityLabel = new JLabel("Get track by city:");
-        cityLabel.setForeground(Color.LIGHT_GRAY);
-        cityLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
+        temperature = standardStylize(25);
+        otherWeatherLabel = standardStylize(14);
+        or = standardStylize(18);
+        or.setText("or");
         cityBox = new JTextField();
-        artistLabel = new JLabel();
+        trackLabel = new JLabel();
+        trackLabel.setFont(new Font("Agency FB", Font.PLAIN, 32));
+        trackLabel.setForeground(Color.LIGHT_GRAY);
+        artistLabel = standardStylize(18);
+        albumLabel = standardStylize(18);
         artistIcon = new JLabel();
-        albumLabel = new JLabel();
         albumIcon = new JLabel(":");
-        button = new JButton("Get Track");
+        cityButton = new JButton("Get Track from City");
+        locationButton = new JButton("Get Track from Current Location");
         container = getContentPane();
         container.setLayout(null);
         setBounds();
@@ -45,19 +41,20 @@ public class UI extends JFrame {
     }
 
     public void setBounds() {
-        intro.setBounds(85, 50, 600, 30);
-        location.setBounds(340, 30, 600, 30);
-        weatherIcon.setBounds(340, 55, 64, 64);
-        temperature.setBounds(415, 63, 128, 64);
-        otherWeatherLabel.setBounds(490, 20, 192, 128);
-        trackLabel.setBounds(112, 80, 600, 30);
-        cityLabel.setBounds(100, 130, 200, 30);
-        cityBox.setBounds(260, 130, 250, 30);
-        artistLabel.setBounds(120, 180, 100, 30);
-        artistIcon.setBounds(120, 230, 300, 300);
-        albumLabel.setBounds(120, 280, 100, 30);
-        albumIcon.setBounds(150, 380, 112, 112);
-        button.setBounds(165, 390, 250, 30);
+        intro.setBounds(80, 45, 600, 30);
+        location.setBounds(345, 20, 600, 30);
+        weatherIcon.setBounds(340, 45, 64, 64);
+        temperature.setBounds(415, 49, 128, 64);
+        otherWeatherLabel.setBounds(500, 12, 192, 128);
+        or.setBounds(402, 132, 200, 30);
+        cityBox.setBounds(200, 130, 175, 30);
+        trackLabel.setBounds(200, 180, 750, 30); //TODO: Relative positioning
+        artistLabel.setBounds(50, 95, 400, 300);
+        artistIcon.setBounds(50, 165, 300, 300);
+        albumLabel.setBounds(400, 95, 400, 300);
+        albumIcon.setBounds(400, 265, 112, 112);
+        cityButton.setBounds(50, 130, 150, 30);
+        locationButton.setBounds(445, 130, 250, 30);
     }
 
     public void addComponents() {
@@ -67,13 +64,21 @@ public class UI extends JFrame {
         container.add(temperature);
         container.add(otherWeatherLabel);
         container.add(trackLabel);
-        container.add(cityLabel);
+        container.add(or);
         container.add(cityBox);
         container.add(artistLabel);
         container.add(artistIcon);
         container.add(albumLabel);
         container.add(albumIcon);
-        container.add(button);
+        container.add(cityButton);
+        container.add(locationButton);
+    }
+
+    private JLabel standardStylize(int fontSize) {
+        JLabel jLabel = new JLabel("");
+        jLabel.setForeground(Color.LIGHT_GRAY);
+        jLabel.setFont(new Font("Bahnschrift", Font.PLAIN, fontSize));
+        return jLabel;
     }
 
 }
