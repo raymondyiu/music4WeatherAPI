@@ -25,7 +25,7 @@ public class WeatherController {
 
         Weather weather = restTemplate.getForObject(uri, Weather.class);
 
-        return new ResponseEntity<>(weather,HttpStatus.OK);
+        return new ResponseEntity<>(weather, HttpStatus.OK);
     }
 
     @GetMapping({"/keywords/{city}"})
@@ -33,7 +33,6 @@ public class WeatherController {
         String uri = "http://api.weatherapi.com/v1/current.json?key=8ced75335ba84c23b40231355232003&q=" + city;
         RestTemplate restTemplate = new RestTemplate();
 
-        return new ResponseEntity<>(service.getKeywords(restTemplate.getForObject(uri, Weather.class)),HttpStatus.OK);
+        return new ResponseEntity<>(service.getKeywords(restTemplate.getForObject(uri, Weather.class)), HttpStatus.OK);
     }
-
 }
