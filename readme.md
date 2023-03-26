@@ -25,13 +25,21 @@ An API application that takes the name of a city as input and provides a song re
 
 ## Features
 
+- Recommend a song to the User based on input city name and city's current weather condition.
+- If it's sunny in the user's location, we can recommend them a random song from a keyword related to sun/sunshine.
+
+
 ## Endpoints
-| Number | Endpoint                                   | Description                                |
-|--------|--------------------------------------------|--------------------------------------------|
-| 1      | GET /api/v1/music4Weather                  | Welcome to Music for Weather API           |
-| 2      | GET /api/v1/music4Weather/getWeatherByCity | input : city output : Weather info         |
-| 3      | GET /api/v1/music4Weather/getTrackByName   | intput : name output : music track preview |
-| 4      | GET /api/v1/music4Weather/getTrackBaseOnWeather | input : city output : random one track preview call getWeatherByCity then getTrachByName |
+
+| Number | Endpoint                         | Description                                                                              |
+|--------|----------------------------------|------------------------------------------------------------------------------------------|
+| 1      | GET /api/v1/music4Weather        | Welcome to Music for Weather API                                                         |
+| 2      | GET /api/v1/music4Weather/{city} | input : city name output : song recommendation preview                                   |
+| 3      | GET /weather/{city}              | intput : city name output : current weather info                                         |
+| 4      | GET /keywords/{city}             | input : city output : random one track preview call getWeatherByCity then getTrachByName |
+| 5      | GET /api/v1/track/{id}           | input : id output : music data                                                           |
+| 6      | GET /api/v1/track/search?q=      | input : keyword output : music data                                                      |
+
 
 ## Test result
 
