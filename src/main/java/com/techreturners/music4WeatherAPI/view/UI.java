@@ -23,13 +23,13 @@ public class UI extends JFrame {
         or = standardStylize(18);
         or.setText("or");
         cityBox = new JTextField();
-        trackLabel = new JLabel();
-        trackLabel.setFont(new Font("Agency FB", Font.PLAIN, 32));
+        trackLabel = new JLabel("", SwingConstants.CENTER);
+        trackLabel.setFont(new Font("Agency FB", Font.PLAIN, 35));
         trackLabel.setForeground(Color.LIGHT_GRAY);
         artistLabel = standardStylize(18);
         albumLabel = standardStylize(18);
-        artistIcon = new JLabel();
-        albumIcon = new JLabel(":");
+        artistIcon = new JLabel("", SwingConstants.CENTER);
+        albumIcon = new JLabel("", SwingConstants.CENTER);
         cityButton = new JButton("Get Track from City");
         locationButton = new JButton("Get Track from Current Location");
         container = getContentPane();
@@ -48,11 +48,11 @@ public class UI extends JFrame {
         otherWeatherLabel.setBounds(500, 12, 192, 128);
         or.setBounds(402, 132, 200, 30);
         cityBox.setBounds(200, 130, 175, 30);
-        trackLabel.setBounds(200, 180, 750, 30); //TODO: Relative positioning
-        artistLabel.setBounds(50, 95, 400, 300);
-        artistIcon.setBounds(50, 165, 300, 300);
-        albumLabel.setBounds(400, 95, 400, 300);
-        albumIcon.setBounds(400, 265, 112, 112);
+        trackLabel.setBounds(0, 180, 750, 50);
+        artistLabel.setBounds(50, 115, 350, 300);
+        artistIcon.setBounds(0, 205, 300, 300);
+        albumLabel.setBounds(400, 115, 350, 300);
+        albumIcon.setBounds(450, 290, 112, 112);
         cityButton.setBounds(50, 130, 150, 30);
         locationButton.setBounds(445, 130, 250, 30);
     }
