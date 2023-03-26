@@ -41,6 +41,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>jl</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
