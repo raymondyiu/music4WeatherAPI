@@ -27,6 +27,8 @@ public class Music4WeatherView extends JFrame {
     @Autowired
     private WeatherController weatherController;
 
+    private Player mp3Player;
+
     public Music4WeatherView() {
 
         initUI();
@@ -88,8 +90,10 @@ public class Music4WeatherView extends JFrame {
         URLConnection conn = new URL(urlString).openConnection();
         InputStream is = conn.getInputStream();
 
-        Player playMP3 = new Player(is);
-        playMP3.play();
+        if (mp3Player != null) mp3Player.close();
+
+        mp3Player = new Player(is);
+        mp3Player.play();
 
     }
 }
