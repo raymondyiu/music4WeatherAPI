@@ -42,8 +42,8 @@
 
 		<dependency>
 			<groupId>javazoom</groupId>
-			<artifactId>jl</artifactId>
-			<version>LATEST</version>
+			<artifactId>jlayer</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -66,6 +66,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${parent.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<argLine>-Djava.awt.headless=false</argLine>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
