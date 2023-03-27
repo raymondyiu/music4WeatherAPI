@@ -2,6 +2,7 @@ package com.techreturners.music4WeatherAPI.controller;
 
 import com.techreturners.music4WeatherAPI.exception.RecordNotFoundException;
 import com.techreturners.music4WeatherAPI.model.Weather;
+import com.techreturners.music4WeatherAPI.service.KeywordGenerator;
 import com.techreturners.music4WeatherAPI.service.Music4WeatherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class WeatherController {
@@ -33,13 +37,14 @@ public class WeatherController {
     }
 
     @GetMapping({"/keywords/{city}"})
-    public ResponseEntity<List<String>> getKeywords(@PathVariable String city) {
+    public ResponseEntity<List<String>> getTerms(@PathVariable String city) {
         String uri = "http://api.weatherapi.com/v1/current.json?key=8ced75335ba84c23b40231355232003&q=" + city;
         RestTemplate restTemplate = new RestTemplate();
-        List<String> weatherKeywords=service.getKeywords(restTemplate.getForObject(uri, Weather.class));
-        if(weatherKeywords==null){
-            throw new RecordNotFoundException("There is no matching record found for entered location");
-        }
-        return new ResponseEntity<>(weatherKeywords, HttpStatus.OK);
+
+        Set<KeywordGenerator.Keyword> keywords = service.getKeywords(restTemplate.getForObject(uri, Weather.class));
+        List<String> allTerms = new ArrayList<>();
+        for (KeywordGenerator.Keyword keyword : keywords) allTerms.addAll(Arrays.stream(keyword.getTerms()).toList());
+        return new ResponseEntity<>(allTerms, HttpStatus.OK);
+
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -24,18 +25,18 @@ public class Music4WeatherServiceImpl implements Music4WeatherService{
     }
 
     @Override
-    public List<String> getKeywords(Weather weatherData) {
+    public Set<KeywordGenerator.Keyword> getKeywords(Weather weatherData) {
         KeywordGenerator keywordGenerator = new KeywordGenerator(weatherData);
-        return keywordGenerator.getKeywords().stream().map(Enum::toString).toList();
+        return keywordGenerator.getKeywords();
     }
 
     @Override
-    public Track getTrack(ResponseEntity<List<String>> keywordsResponse) throws Exception {
+    public Track getTrack(ResponseEntity<List<String>> termsResponse) throws Exception {
 
-        List<String> keywords = keywordsResponse.getBody();
-        if (keywords == null) {throw new Exception(); /*TODO: Established exception handling*/}
+        List<String> terms = termsResponse.getBody();
+        if (terms == null) {throw new Exception(); /*TODO: Established exception handling*/}
 
-        ResponseEntity<List<Track>> tracks = deezerController.getTracksByQueryParam(deezerAPICallService.generateTrackSearchQuery(keywords));
+        ResponseEntity<List<Track>> tracks = deezerController.getTracksByQueryParam(deezerAPICallService.generateTrackSearchQuery(terms));
         List<Track> trackList = tracks.getBody();
         if (trackList == null) {throw new Exception(); /*TODO: Established exception handling*/}
 
