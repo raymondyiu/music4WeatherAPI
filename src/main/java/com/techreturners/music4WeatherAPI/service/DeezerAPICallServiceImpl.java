@@ -14,10 +14,12 @@ import java.util.concurrent.ThreadLocalRandom;
 @Service
 public class DeezerAPICallServiceImpl implements DeezerAPICallService {
 
+
+    private RestTemplate restTemplate = new RestTemplate();
+
     @Override
     public Track getTrackById(Long id) throws RecordNotFoundException {
         String uri = "https://api.deezer.com/track/" + id;
-        RestTemplate restTemplate = new RestTemplate();
         Track track = restTemplate.getForObject(uri, Track.class);
         if(null == track.getId())
                 throw new RecordNotFoundException("Records Not Found !!!!");
@@ -28,7 +30,6 @@ public class DeezerAPICallServiceImpl implements DeezerAPICallService {
     @Override
     public List<Track> getTracksByParam(String param) throws RecordNotFoundException {
         String uri = "https://api.deezer.com/search?q=" + param;
-        RestTemplate restTemplate = new RestTemplate();
 
         TrackList trackList = restTemplate.getForObject(uri, TrackList.class);
         if(trackList.getData().isEmpty())
