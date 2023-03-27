@@ -5,6 +5,7 @@ import com.techreturners.music4WeatherAPI.model.Condition;
 import com.techreturners.music4WeatherAPI.model.Current;
 import com.techreturners.music4WeatherAPI.model.Location;
 import com.techreturners.music4WeatherAPI.model.Weather;
+import com.techreturners.music4WeatherAPI.service.KeywordGenerator;
 import com.techreturners.music4WeatherAPI.service.Music4WeatherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.when;
 
@@ -69,14 +72,13 @@ public class WeatherControllerTests {
     @Test
     public void testGetMappingGetWeatherKeywordsByCity() throws Exception {
 
-        String city = "london";
-
         Location location = new Location("London", "City of London, Greater London", "United Kingdom", "Europe/London", "2023-03-26 18:55");
         Condition condition = new Condition("Partly cloudy", "//cdn.weatherapi.com/weather/64x64/day/116.png", 1003);
         Current current = new Current(8, 1, condition, 10.5, 16.9, 30, 0, 61, 50, 10, 6, 2);
         Weather weatherData = new Weather(location, current);
 
-        List<String> keywords = Arrays.asList("WINDY", "CLOUDY", "BREEZY");
+        Set<KeywordGenerator.Keyword> keywords = new HashSet<>() ;
+        keywords.add(KeywordGenerator.Keyword.RAINY);
 
         when(music4WeatherServiceImpl.getKeywords(weatherData)).thenReturn(keywords);
 
