@@ -1,5 +1,6 @@
 package com.techreturners.music4WeatherAPI.controller;
 
+import com.techreturners.music4WeatherAPI.exception.RecordNotFoundException;
 import com.techreturners.music4WeatherAPI.model.Weather;
 import com.techreturners.music4WeatherAPI.service.Music4WeatherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +22,24 @@ public class WeatherController {
     @GetMapping({"/weather/{city}"})
     public ResponseEntity<Weather> getWeatherDetails(@PathVariable String city) {
         String uri = "http://api.weatherapi.com/v1/current.json?key=8ced75335ba84c23b40231355232003&q=" + city;
+
         RestTemplate restTemplate = new RestTemplate();
 
         Weather weather = restTemplate.getForObject(uri, Weather.class);
-
-        return new ResponseEntity<>(weather,HttpStatus.OK);
+        if(weather==null){
+            throw new RecordNotFoundException("There is no matching record found for entered location ");
+        }
+        return new ResponseEntity<>(weather, HttpStatus.OK);
     }
 
     @GetMapping({"/keywords/{city}"})
     public ResponseEntity<List<String>> getKeywords(@PathVariable String city) {
         String uri = "http://api.weatherapi.com/v1/current.json?key=8ced75335ba84c23b40231355232003&q=" + city;
         RestTemplate restTemplate = new RestTemplate();
-
-        return new ResponseEntity<>(service.getKeywords(restTemplate.getForObject(uri, Weather.class)),HttpStatus.OK);
+        List<String> weatherKeywords=service.getKeywords(restTemplate.getForObject(uri, Weather.class));
+        if(weatherKeywords==null){
+            throw new RecordNotFoundException("There is no matching record found for entered location");
+        }
+        return new ResponseEntity<>(weatherKeywords, HttpStatus.OK);
     }
-
 }
