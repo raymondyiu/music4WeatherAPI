@@ -59,6 +59,8 @@ An API application that takes the name of a city as input and provides a song re
 - Recommend a song base on user's city input and city's current weather condition
   ![Functional test result #1](./images/music4WeatherFunctionTest1.png)
 
+- Music4WeatherView Screen Shot
+![Music4WeatherView UI](./images/Music4WeatherViewScreenShot.png)
 
 ## Future thoughts
 - Frontend with Images
