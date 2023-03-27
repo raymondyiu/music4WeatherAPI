@@ -82,6 +82,7 @@ public class Music4WeatherView extends JFrame {
         });
 
         ui.setVisible(true);
+        ui.setResizable(false);
 
     }
 
