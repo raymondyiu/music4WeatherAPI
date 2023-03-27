@@ -6,7 +6,9 @@ import com.techreturners.music4WeatherAPI.model.TrackList;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -35,10 +37,10 @@ public class DeezerAPICallServiceImpl implements DeezerAPICallService {
     }
 
     @Override
-    public String generateTrackSearchQuery(List<String> keywords) {
+    public String generateTrackSearchQuery(List<String> terms) {
         // URL = https://api.deezer.com/search?q=track:"i need a dollar"
-        String chosenKeyword = keywords.get(ThreadLocalRandom.current().nextInt(0, keywords.size()));
-        return "track:\"" + chosenKeyword + "\"";
+        String chosenTerm = terms.get(ThreadLocalRandom.current().nextInt(0, terms.size()));
+        return "track:\"" + chosenTerm + "\"";
     }
 
 }

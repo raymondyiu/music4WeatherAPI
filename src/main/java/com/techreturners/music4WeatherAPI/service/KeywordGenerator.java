@@ -13,7 +13,7 @@ import static com.techreturners.music4WeatherAPI.service.KeywordGenerator.Keywor
 
 public class KeywordGenerator {
 
-    private Weather data = null;
+    private Weather data;
 
     private String description;
     private int code;
@@ -46,6 +46,7 @@ public class KeywordGenerator {
         calculateWind();
         calculateHumidity();
         calculateVisibility();
+        inferCode();
     }
 
     private void calculateTemperature() {
@@ -94,37 +95,6 @@ public class KeywordGenerator {
         int j = ThreadLocalRandom.current().nextInt(keyword.terms.length);
         return keyword.terms[j];
     }
-
-    // Plenty of room for more terms here - may even want to use a thesaurus API
-    // Each term could be weighted by specificity to encourage more specific term generation
-    enum Keyword {
-        CLEAR(new String[]{"clear","fair"}),
-        HOT(new String[]{"hot","heat"}),
-        COLD(new String[]{"cold","chilly","chilled","chill","cool","arctic"}),
-        SUNNY(new String[]{"sun","sunny","sunshine","sunlit","bright"}),
-        CLOUDY(new String[]{"cloud","clouds","raincloud","cloudy","clouded","grey"}),
-        OVERCAST(new String[]{"overcast"}),
-        BREEZY(new String[]{"breezy","breeze","brisk"}),
-        WINDY(new String[]{"wind","windy"}),
-        GALE(new String[]{"gale","gust","gusty"}),
-        STORM(new String[]{"storm","stormy","tempest","tempestuous"}),
-        SQUALL(new String[]{"squall"}),
-        RAINY(new String[]{"rain","rainy","wet","raindrop","raindrops"}),
-        FOGGY(new String[]{"mist", "fog","foggy","misty","hazy"}),
-        FROSTY(new String[]{"frost","frosty","ice","freezing","frozen","arctic","icy"}),
-        SNOWY(new String[]{"snow","snowy"}),
-        HAIL(new String[]{"hail","sleet"}),
-        HUMID(new String[]{"humid","humidity","close","heavy"}),
-        THUNDER(new String[]{"thunder","thunderstorm","lightning","flash","thunderclap","thunderbolt"}),
-        BLIZZARD(new String[]{"blizzard","snowstorm"});
-
-        String[] terms;
-
-        Keyword(String[] terms){
-            this.terms = terms;
-        }
-
-    }
     
     private void inferCode() {
         switch (this.code) {
@@ -168,6 +138,38 @@ public class KeywordGenerator {
                 this.keywords.add(THUNDER);
             }
         }
+    }
+
+    // Plenty of room for more terms here - may even want to use a thesaurus API
+    // Each term could be weighted by specificity to encourage more specific term generation
+    public enum Keyword {
+        CLEAR(new String[]{"clear","fair"}),
+        HOT(new String[]{"hot","heat"}),
+        COLD(new String[]{"cold","chilly","chilled","chill","cool","arctic"}),
+        SUNNY(new String[]{"sun","sunny","sunshine","sunlit","bright"}),
+        CLOUDY(new String[]{"cloud","clouds","raincloud","cloudy","clouded","grey"}),
+        OVERCAST(new String[]{"overcast"}),
+        BREEZY(new String[]{"breezy","breeze","brisk"}),
+        WINDY(new String[]{"wind","windy"}),
+        GALE(new String[]{"gale","gust","gusty"}),
+        STORM(new String[]{"storm","stormy","tempest","tempestuous"}),
+        SQUALL(new String[]{"squall"}),
+        RAINY(new String[]{"rain","rainy","wet","raindrop","raindrops"}),
+        FOGGY(new String[]{"mist", "fog","foggy","misty","hazy"}),
+        FROSTY(new String[]{"frost","frosty","ice","freezing","frozen","arctic","icy"}),
+        SNOWY(new String[]{"snow","snowy"}),
+        HAIL(new String[]{"hail","sleet"}),
+        HUMID(new String[]{"humid","humidity","close","heavy"}),
+        THUNDER(new String[]{"thunder","thunderstorm","lightning","flash","thunderclap","thunderbolt"}),
+        BLIZZARD(new String[]{"blizzard","snowstorm"});
+
+        @Getter
+        String[] terms;
+
+        Keyword(String[] terms){
+            this.terms = terms;
+        }
+
     }
 
 }
