@@ -4,11 +4,12 @@ import com.techreturners.music4WeatherAPI.exception.RecordNotFoundException;
 import com.techreturners.music4WeatherAPI.model.Track;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DeezerAPICallService {
 
     Track getTrackById(Long id) throws RecordNotFoundException;
     List<Track> getTracksByParam(String param) throws RecordNotFoundException;
-    String generateTrackSearchQuery(List<String> keywords);
+    String generateTrackSearchQuery(List<String> terms);
     
 }

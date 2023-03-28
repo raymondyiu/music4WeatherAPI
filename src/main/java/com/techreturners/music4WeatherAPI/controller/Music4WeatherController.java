@@ -27,10 +27,10 @@ public class Music4WeatherController {
     @GetMapping({"/{city}"})
     public ResponseEntity<Track> getTrack(@PathVariable String city) throws Exception {
 
-        ResponseEntity<List<String>> keywordsResponse = weatherController.getKeywords(city);
-        if (keywordsResponse.getStatusCode() != HttpStatus.OK) {throw new Exception(); /*TODO: Established exception handling*/}
+        ResponseEntity<List<String>> termsResponse = weatherController.getTerms(city);
+        if (termsResponse.getStatusCode() != HttpStatus.OK) {throw new Exception(); /*TODO: Established exception handling*/}
 
-        Track chosenTrack = music4WeatherService.getTrack(keywordsResponse);
+        Track chosenTrack = music4WeatherService.getTrack(termsResponse);
 
         return new ResponseEntity<>(chosenTrack,HttpStatus.OK);
 

@@ -5,11 +5,12 @@ import com.techreturners.music4WeatherAPI.model.Weather;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Set;
 
 public interface Music4WeatherService {
 
     String getWelcomMsg();
-    List<String> getKeywords(Weather weatherData);
-    Track getTrack(ResponseEntity<List<String>> keywordsResponse) throws Exception;
+    Set<KeywordGenerator.Keyword> getKeywords(Weather weatherData);
+    Track getTrack(ResponseEntity<List<String>> termsResponse) throws Exception;
 
 }
