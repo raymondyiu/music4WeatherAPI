@@ -12,5 +12,7 @@ public interface Music4WeatherService {
     String getWelcomMsg();
     Set<KeywordGenerator.Keyword> getKeywords(Weather weatherData);
     Track getTrack(ResponseEntity<List<String>> termsResponse) throws Exception;
+    String getPublicIPAddress();
+
 
 }
