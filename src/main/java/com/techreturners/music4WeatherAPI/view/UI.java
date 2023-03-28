@@ -1,8 +1,13 @@
 package com.techreturners.music4WeatherAPI.view;
 
+import lombok.SneakyThrows;
+import org.springframework.core.io.ClassPathResource;
+
 import javax.swing.*;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UI extends JFrame {
 
@@ -12,19 +17,26 @@ public class UI extends JFrame {
     JButton cityButton, locationButton;
     Container container;
 
+    @SneakyThrows
     public UI() {
-        intro = new JLabel("Music4Weather"/*track.getTitle()*/);
-        intro.setFont(new Font("Agency FB", Font.BOLD, 40));
+        intro = new JLabel("Music4Weather");
+        ClassPathResource resource = new ClassPathResource("agencyb.ttf");
+        InputStream inputStream = resource.getInputStream();
+        Font agencyBold = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(40f);
+        intro.setFont(agencyBold);
         intro.setForeground(Color.LIGHT_GRAY);
-        location = standardStylize(18);
+        location = standardStylize(18f);
         weatherIcon = new JLabel("");
-        temperature = standardStylize(25);
-        otherWeatherLabel = standardStylize(14);
-        or = standardStylize(18);
+        temperature = standardStylize(25f);
+        otherWeatherLabel = standardStylize(14f);
+        or = standardStylize(18f);
         or.setText("or");
         cityBox = new JTextField();
         trackLabel = new JLabel("", SwingConstants.CENTER);
-        trackLabel.setFont(new Font("Agency FB", Font.PLAIN, 35));
+        ClassPathResource resource2 = new ClassPathResource("agencyr.ttf");
+        InputStream inputStream2 = resource2.getInputStream();
+        Font agencyBold2 = Font.createFont(Font.TRUETYPE_FONT, inputStream2).deriveFont(40f);
+        trackLabel.setFont(agencyBold2);
         trackLabel.setForeground(Color.LIGHT_GRAY);
         artistLabel = standardStylize(18);
         albumLabel = standardStylize(18);
@@ -74,10 +86,13 @@ public class UI extends JFrame {
         container.add(locationButton);
     }
 
-    private JLabel standardStylize(int fontSize) {
+    private JLabel standardStylize(float fontSize) throws IOException, FontFormatException {
         JLabel jLabel = new JLabel("");
         jLabel.setForeground(Color.LIGHT_GRAY);
-        jLabel.setFont(new Font("Bahnschrift", Font.PLAIN, fontSize));
+        ClassPathResource resource = new ClassPathResource("bahnschrift.ttf");
+        InputStream inputStream = resource.getInputStream();
+        Font bahnschrift = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(fontSize);
+        jLabel.setFont(bahnschrift);
         return jLabel;
     }
 
